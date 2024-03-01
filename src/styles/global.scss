@@ -1,0 +1,117 @@
+:root {
+    --black: #000;
+    --dark-blue: #0a081e;
+    --white: #fff;
+    --dark-grey-100: #1c1c1e;
+    --light-grey: rgba(0,0,0,.3);
+    --light-grey-100: #f1ede7;
+    --light-grey-200: rgba(255,255,255,.43);
+    --nav-height-desktop: 150px;
+    --text-color: var(--black);
+    --background-color: var(--light-grey-100);
+    --color-mode: "light";
+    --nav-height: 116px;
+    --footer-height: 116px;
+}
+
+/** Font face **/
+@font-face {
+    font-family: "Averta CY";
+    src: url("../fonts/AvertaCY-Light.woff2") format('woff2');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Averta CY";
+    src: url("../fonts/AvertaCY-Regular.woff2") format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Averta CY";
+    src: url("../fonts/AvertaCY-Semibold.woff2") format('woff2');
+    font-weight: 600;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Averta CY", sans-serif;
+    font-weight: 400;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color .7s ease, color .7s ease;
+    // perspective: 800px;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    margin: 0;
+}
+
+h1, .h1 {
+    font-size: 90px;
+    line-height: 1;
+}
+
+h2, .h2 {
+    font-size: 70px;
+    line-height: 1;
+}
+
+h3, .h3 {
+    font-size: 50px;
+    line-height: 1;
+}
+
+h4, .h4 {
+    font-size: 32px;
+    line-height: 1.5;
+}
+
+p, .p {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--text-color);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+button {
+    color: var(--black);
+    font-size: 20px;
+    font-family: "Averta CY", sans-serif;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title {
+    h1, h2 {
+        font-size: 40px;
+
+        @media(min-width: 768px){
+            font-size: min(90px, 5vw);
+        }
+    }
+}
+
+.slideIn {
+    opacity: 0;
+    visibility: hidden;
+}

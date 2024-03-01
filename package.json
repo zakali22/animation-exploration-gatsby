@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "animation-exploration-gatsby",
-  "author": "zakali11",
+  "author": "zakali22",
   "keywords": [
     "gatsby"
   ],
@@ -16,19 +16,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@mdx-js/react": "^3.0.1",
+    "@gsap/react": "^2.1.0",
     "gatsby": "^5.13.3",
     "gatsby-plugin-image": "^3.13.1",
-    "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "gsap": "^3.12.5",
+    "jquery": "^3.7.1",
+    "mouse-follower": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.71.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
