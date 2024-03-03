@@ -115,3 +115,12 @@ img {
     opacity: 0;
     visibility: hidden;
 }
+
+.dark-mode {
+    --text-color: var(--white);
+    --background-color: var(--dark-grey-100);
+    --color-mode: "light";
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+}

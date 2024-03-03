@@ -15,30 +15,9 @@ export const useThemeContext = () => React.useContext(ThemeContext)
 
 export const ThemeProvider = ({children}: React.PropsWithChildren<{}>) => {
     const [theme, setTheme] = React.useState<ThemeType>('light')
-    let themeColors = {
-        textColor: '#000',
-        backgroundColor: '#f1ede7'
-    }
-
+    
     function updateTheme(theme: ThemeType){
         setTheme(theme)
-
-        changeVariables(theme)
-    }
-
-    function changeVariables(theme: ThemeType){
-        // console.log(mode)
-        if(theme === "light"){
-            document.documentElement.style.setProperty('--text-color', themeColors['textColor'])
-            document.documentElement.style.setProperty('--background-color', themeColors['backgroundColor'])
-            document.documentElement.style.setProperty('--color-mode', 'dark')
-            // persistTheme(DARK_MODE)
-        } else {
-            document.documentElement.style.setProperty('--text-color', themeColors['textColor'])
-            document.documentElement.style.setProperty('--background-color', themeColors['backgroundColor'])
-            document.documentElement.style.setProperty('--color-mode', 'light')
-            // persistTheme(LIGHT_MODE)
-        }
     }
 
     return (
