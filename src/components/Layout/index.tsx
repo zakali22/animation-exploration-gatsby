@@ -6,7 +6,7 @@ const Layout = ({ children }: React.PropsWithChildren<{}>) => {
     const {theme} = useThemeContext()
 
     return (
-        <div className={`${theme === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+        <div className={`wrapper ${theme === 'dark' ? 'dark-mode' : 'light-mode'}`}>
             <Nav />
             <main>
                 {children}

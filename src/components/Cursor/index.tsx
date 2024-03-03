@@ -9,8 +9,8 @@ type MouseFollowerType = InstanceType<typeof MouseFollower> | null
 MouseFollower.registerGSAP(gsap)
 const customCursor = () => {
     let cursor: MouseFollowerType = null
-    // console.log("Running the customCursor")
-    // console.log(Magnetic)
+    // // console.log("Running the customCursor")
+    // // console.log(Magnetic)
 
     React.useEffect(() => { 
         cursor = new MouseFollower({
@@ -19,18 +19,18 @@ const customCursor = () => {
             iconSvgSrc: arrowUp
         })
 
-        console.log("Running it")
+        // console.log("Running it")
         initExpandedCursor()
         initMagneticCursor()
     }, [])
 
     function initMagneticCursor(){
         const magneticEl = document.querySelectorAll('[data-magnetic]')
-        // console.log("Running initMagneticCursor")
-        // console.log(magneticEl)
+        // // console.log("Running initMagneticCursor")
+        // // console.log(magneticEl)
         magneticEl.forEach(el => {
 
-            console.log(el)
+            // console.log(el)
             new Magnetic(el, {
                 s: 0.1,
                 rs: 0.2,
@@ -41,15 +41,15 @@ const customCursor = () => {
 
     function initExpandedCursor(){
         const mediaEl = document.querySelectorAll('[data-cursor-expand]')
-        console.log(mediaEl)
+        // console.log(mediaEl)
         mediaEl.forEach(el => {
             const cursorSize = (el as HTMLElement).dataset.cursorSize ? (el as HTMLElement).dataset.cursorSize : 'sm'
             const arrowCursor = (el as HTMLElement).dataset.arrowCursor
 
-            console.log(cursorSize)
+            // console.log(cursorSize)
 
             el.addEventListener('mouseenter', function(){
-                console.log("mouseentered")
+                // console.log("mouseentered")
                 if(arrowCursor){
                     cursor?.setIcon('arrow-up')
                 }

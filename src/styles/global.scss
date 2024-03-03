@@ -116,6 +116,14 @@ img {
     visibility: hidden;
 }
 
+.wrapper {
+    height: 100%;
+
+    @media(min-height: 600px){
+        height: 100vh;
+    }
+}
+
 .dark-mode {
     --text-color: var(--white);
     --background-color: var(--dark-grey-100);

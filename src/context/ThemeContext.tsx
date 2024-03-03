@@ -15,9 +15,16 @@ export const useThemeContext = () => React.useContext(ThemeContext)
 
 export const ThemeProvider = ({children}: React.PropsWithChildren<{}>) => {
     const [theme, setTheme] = React.useState<ThemeType>('light')
-    
+ 
+    React.useEffect(() => {
+        if(window.localStorage.getItem('color-mode') === null) return
+
+        setTheme(window.localStorage.getItem('color-mode') as ThemeType)
+    }, [])
+
     function updateTheme(theme: ThemeType){
         setTheme(theme)
+        window.localStorage.setItem('color-mode', theme)
     }
 
     return (
