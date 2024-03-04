@@ -28,7 +28,8 @@ section {
 .title {
     &.title--center {
         & > h1,
-        & > h2 {
+        & > h2, 
+        & > p {
             text-align: center;
         }
     }
