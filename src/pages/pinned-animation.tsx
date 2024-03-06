@@ -12,6 +12,10 @@ const PinnedAnimations = () => {
         // console.log(scroll)
     })
 
+    React.useEffect(() => {
+        window.history.scrollRestoration = 'manual' // Reset position to the top
+    }, [])
+
     return (
         <>
             <PinnedHeader />
