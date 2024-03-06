@@ -17,7 +17,9 @@ const PinnedHeader = () => {
         mm.add("(min-width: 1200px)", () => {
             const masterTl = gsap.timeline()
             // masterTl.add(videoScaleAnim())
-            masterTl.add(textRevealAnim())
+            masterTl
+                .add(textRevealAnim())
+                .add(fadeOutAnim())
         })
 
         function getProgressOfLabel(tl: gsap.core.Timeline, label: string) {
@@ -27,14 +29,14 @@ const PinnedHeader = () => {
         function textRevealAnim(){
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".wrapper", 
+                    trigger: container.current, 
                     start: "top top",
                     toggleActions: "play complete reverse none",
-                    end: "+=2000px",
-                    pin: ".wrapper",
+                    end: "+=200%",
+                    pin: container.current,
                     pinSpacing: true,
                     scrub: 1,
-                    markers: true, 
+                    markers: false, 
                     onEnter: () => {
                         const tl_initial = gsap.timeline()
                         tl_initial
@@ -52,15 +54,40 @@ const PinnedHeader = () => {
             tl.from('.pinned-animation-header__middle-row span:last-child', {x: "100%", autoAlpha: 0, duration: 1}, "slideIn")
             tl.from('.pinned-animation-header__bottom-row', {y: "100%", autoAlpha: 0, duration: 1}, "slideIn")
 
-            tl.addLabel("fadeOut")
-            tl.to('.wrapper', {scale: 0.3, autoAlpha: 0, duration: 1}, "fadeOut")
-
+        
             return tl
         }
+
+        function fadeOutAnim(){
+            const tl0 = gsap.timeline({
+                paused: true,
+                scrollTrigger: {
+                    trigger: container.current, 
+                    start: "top top",
+                    // toggleActions: "play complete reverse none",
+                    end: "+=1000",
+                    immediateRender: false,
+                    pin: container.current,
+                    pinnedContainer: container.current,
+                    pinSpacing: true,
+                    scrub: 1,
+                    markers: true, 
+                    onUpdate: () => {
+                        // console.log(tl0?.scrollTrigger?.adjustPinSpacing(1000))
+                    }
+                }
+            })
+            tl0.addLabel("fadeOut")
+            tl0.to(container.current, {scale: 0.3, autoAlpha: 0, duration: 1}, "fadeOut")
+
+            return tl0
+        }
+    }, {
+        scope: container
     })
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" ref={container}>
             <section className="pinned-animation-video">
                 <div className="pinned-animation-video__container">
                     <video src={heroVideo} autoPlay loop muted></video>

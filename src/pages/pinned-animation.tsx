@@ -19,13 +19,7 @@ const PinnedAnimations = () => {
     return (
         <>
             <PinnedHeader />
-
-            <section className="container" >
-            
-            </section>
-
             <PinnedPanels />
-
             <section className="title title--center container">
                 <h2 className="slideIn">Pinned animation</h2>
             </section>
