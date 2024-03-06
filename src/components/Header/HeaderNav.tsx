@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 const HeaderNav = () => {
     return (
@@ -6,10 +7,10 @@ const HeaderNav = () => {
             <h2 className="p">Take a look at these animations</h2>
             <ul className="header__nav-links">
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
-                    <a href="/pinned-animation.html">
+                    <Link to="/pinned-animation">
                         <span>01</span>
                         <span>pinned animations</span>
-                    </a>
+                    </Link>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
