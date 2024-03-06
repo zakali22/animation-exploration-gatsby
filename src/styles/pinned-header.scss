@@ -1,0 +1,51 @@
+.pinned-animation-header {
+    &__title {
+        display: flex;
+        flex-direction: column;
+
+        
+        @media(min-width: 1200px){
+            align-items: center;
+        }
+
+        span {
+            font-family: 'BodoniModa';
+            font-weight: 400;
+            color: var(--dark-blue);
+            font-size: 80px;
+
+            @media(min-width: 1200px){
+                font-size: 110px;
+            }
+        }
+    }
+
+    &__middle-row {
+        display: flex;
+        flex-direction: column;
+
+        @media(min-width: 1200px){
+            flex-direction: row;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        span {
+            font-style: italic;
+            color: var(--light-grey-300);
+            
+            &:first-child {
+                color: var(--light-grey-400);
+                font-family: 'Lato', sans-serif;
+                font-weight: 300;
+            }
+            
+
+
+            @media(min-width: 1200px){
+                text-align: center;
+                width: calc(1200px / 2);
+            }
+        }
+    }
+}

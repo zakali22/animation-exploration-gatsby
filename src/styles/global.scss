@@ -6,12 +6,18 @@
     --light-grey: rgba(0,0,0,.3);
     --light-grey-100: #f1ede7;
     --light-grey-200: rgba(255,255,255,.43);
+    --light-grey-300: #6969696e;
+    --light-grey-400: #0000006e;
     --nav-height-desktop: 150px;
     --text-color: var(--black);
     --background-color: var(--light-grey-100);
     --color-mode: "light";
     --nav-height: 116px;
     --footer-height: 116px;
+    --sm: 768px;
+    --md: 992px;
+    --lg: 1200px;
+    --xl: 1400px;
 }
 
 /** Font face **/
@@ -32,6 +38,32 @@
     src: url("../fonts/AvertaCY-Semibold.woff2") format('woff2');
     font-weight: 600;
 }
+
+@font-face {
+    font-family: "NotoSerif";
+    src: url("../fonts/NotoSerifDisplay-Light.ttf") format('ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "NotoSerif";
+    src: url("../fonts/NotoSerifDisplay-Regular.ttf") format('ttf');
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/Lato-Light.ttf") format('ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "BodoniModa";
+    src: url("../fonts/BodoniModa-Regular.ttf") format('ttf');
+    font-weight: 400;
+}
+
 
 
 *, *::before, *::after {
