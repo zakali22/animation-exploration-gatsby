@@ -22,27 +22,56 @@ const PinnedHeader = () => {
                 .add(fadeOutAnim())
         })
 
-        function getProgressOfLabel(tl: gsap.core.Timeline, label: string) {
-            return tl.labels[label] / tl.totalDuration();
-          }
+        mm.add("(max-width: 1199px)", () => {
+            const masterTl = gsap.timeline()
+            masterTl
+                .add(stackedLayoutAnim())
+        })
+
+        function stackedLayoutAnim(){
+            const tl = gsap.timeline()
+            
+            const ST = ScrollTrigger.create({
+                trigger: container.current, 
+                start: "top top",
+                // toggleActions: "play complete reverse none",
+                end: "+=30%",
+                // pin: container.current,
+                // pinSpacing: true,
+                scrub: 1,
+                markers: false, 
+                animation: tl,
+                // onEnter: () => {
+                //     const tl_initial = gsap.timeline()
+                //     tl_initial
+                //         .set(".pinned-animation-video__container", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", overwrite: "auto"})
+                //         .to(".pinned-animation-video__container", { clipPath: "polygon(5% 7%, 95% 7%, 95% 93%, 5% 93%)", duration: 2.6, ease: "power3.out", overwrite: "auto"})
+                // }
+            })
+
+            tl.fromTo(".pinned-animation-video__container", { clipPath: "polygon(5% 7%, 95% 7%, 95% 93%, 5% 93%)"}, { clipPath: "polygon(40% 90%, 63% 84%, 62% 90%, 39% 96%)", duration: 2}, "slideIn")
+
+            return tl
+        }
 
         function textRevealAnim(){
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: container.current, 
-                    start: "top top",
-                    toggleActions: "play complete reverse none",
-                    end: "+=200%",
-                    pin: container.current,
-                    pinSpacing: true,
-                    scrub: 1,
-                    markers: false, 
-                    onEnter: () => {
-                        const tl_initial = gsap.timeline()
-                        tl_initial
-                            .set(".pinned-animation-video__container", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", overwrite: "auto"})
-                            .to(".pinned-animation-video__container", { clipPath: "polygon(5% 7%, 95% 7%, 95% 93%, 5% 93%)", duration: 2.6, ease: "power3.out", overwrite: "auto"})
-                    }
+            const tl = gsap.timeline()
+
+            const ST = ScrollTrigger.create({
+                trigger: container.current, 
+                start: "top top",
+                toggleActions: "play complete reverse none",
+                end: "+=200%",
+                pin: container.current,
+                pinSpacing: true,
+                scrub: 1,
+                markers: false, 
+                animation: tl,
+                onEnter: () => {
+                    const tl_initial = gsap.timeline()
+                    tl_initial
+                        .set(".pinned-animation-video__container", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", overwrite: "auto"})
+                        .to(".pinned-animation-video__container", { clipPath: "polygon(5% 7%, 95% 7%, 95% 93%, 5% 93%)", duration: 2.6, ease: "power3.out", overwrite: "auto"})
                 }
             })
 
@@ -72,6 +101,7 @@ const PinnedHeader = () => {
                     pinSpacing: true,
                     scrub: 1,
                     markers: false, 
+                    invalidateOnRefresh: true,
                     onUpdate: () => {
                         // console.log(tl0?.scrollTrigger?.adjustPinSpacing(1000))
                     }

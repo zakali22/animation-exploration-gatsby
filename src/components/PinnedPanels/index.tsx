@@ -16,15 +16,26 @@ const PinnedPanels = () => {
         const vh = (coef: number) => window.innerHeight * (coef / 100);
         const mm = gsap.matchMedia()
 
-        mm.add("(min-width: 1200px)", () => {
+        mm.add(
+        {
+            isXlDesktop: `(min-width: 1400px)`,
+            isLgDesktop: "(min-width: 1200px)",
+            isMdDesktop: "(min-width: 992px)"
+        }, 
+        (context) => {
+            let conditions = context.conditions
             const masterTl = gsap.timeline()
             masterTl
-                .add(setupPinning())
+                .add(setupPinning(conditions))
+
+                return () => {
+                    console.log("No animation")
+                }
         })
 
         gsap.registerPlugin(ScrollTrigger)
 
-        function setupPinning(){
+        function setupPinning(mediaQueryConditions){
             if(panelsContentSlidesRef.current && panelsImagesRef.current){
                 const contentPanels = Array.from(panelsContentSlidesRef.current.children)
                 const imagePanels = Array.from(panelsImagesRef.current.children)
@@ -47,8 +58,18 @@ const PinnedPanels = () => {
                     scrollTrigger: {
                         trigger: panelsImagesRef.current,
                         start: "top 20%",
-                        end: vh(430),
-                        scrub: 2
+                        end: () => {
+                            if(mediaQueryConditions.isXlDesktop){
+                                return vh(430)
+                            } else if (mediaQueryConditions.isLgDesktop){
+                                return vh(350)
+                            } else if(mediaQueryConditions.isMdDesktop) {
+                                return vh(300)
+                            }
+                            return vh(200)
+                        },
+                        scrub: 2, 
+                        invalidateOnRefresh: true
                     }
                 })
                 tl1.addLabel("showSlide1")

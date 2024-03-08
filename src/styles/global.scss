@@ -151,7 +151,7 @@ img {
 .wrapper {
     height: 100%;
 
-    @media(min-height: 600px){
+    @media(min-width: 1200px) and (min-height: 600px){
         height: 100vh;
     }
 }
