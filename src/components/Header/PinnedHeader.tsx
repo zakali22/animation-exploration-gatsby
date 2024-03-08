@@ -71,7 +71,7 @@ const PinnedHeader = () => {
                     pinnedContainer: container.current,
                     pinSpacing: true,
                     scrub: 1,
-                    markers: true, 
+                    markers: false, 
                     onUpdate: () => {
                         // console.log(tl0?.scrollTrigger?.adjustPinSpacing(1000))
                     }
