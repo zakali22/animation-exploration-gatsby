@@ -29,7 +29,7 @@ const PinnedPanels = () => {
             let conditions = context.conditions
             const masterTl = gsap.timeline()
             masterTl
-                .add(setupPinning(conditions))
+                .add(setupPinning(conditions as gsap.Conditions) as gsap.core.TimelineChild)
 
                 return () => {
                     console.log("No animation")
@@ -38,7 +38,7 @@ const PinnedPanels = () => {
 
         gsap.registerPlugin(ScrollTrigger)
 
-        function setupPinning(mediaQueryConditions){
+        function setupPinning(mediaQueryConditions: gsap.Conditions){
             if(panelsContentSlidesRef.current && panelsImagesRef.current){
                 const contentPanels = Array.from(panelsContentSlidesRef.current.children)
                 const imagePanels = Array.from(panelsImagesRef.current.children)
@@ -99,6 +99,7 @@ const PinnedPanels = () => {
                 // tl1.to(imagePanels[2], {autoAlpha: 0, duration: 2}, "hideSlide3")
                 // tl1.to(contentPanels[2], {autoAlpha: 0.4, duration: 1}, "hideSlide3")
                 
+                return tl1
             }
         }
     }, {scope: containerRef})
