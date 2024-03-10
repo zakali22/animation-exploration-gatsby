@@ -1,22 +1,31 @@
 .pinned-animation-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
+    height: 100%;
+
+    @media(min-width: 1200px){
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+    }
 
     &__title {
         display: flex;
         flex-direction: column;
-
+        align-items: center;
         
-        @media(min-width: 1200px){
-            align-items: center;
+        
+        @media(min-width: 768px){
         }
 
         span {
             font-family: 'BodoniModa';
             font-weight: 400;
             color: var(--dark-blue);
-            font-size: 80px;
+            font-size: 50px;
+
+            @media(min-width: 992px){
+                font-size: 80px;
+            }
 
             @media(min-width: 1200px){
                 font-size: 110px;
@@ -42,11 +51,16 @@
                 color: var(--light-grey-400);
                 font-family: 'Lato', sans-serif;
                 font-weight: 300;
-                margin-right: 20px;
+
+                @media(min-width: 1200px){
+                    margin-right: 20px;
+                }
             }
             
             &:last-child {
-                margin-left: 20px;
+                @media(min-width: 1200px){
+                    margin-left: 20px;
+                }
             }
 
             @media(min-width: 1200px){
@@ -61,13 +75,24 @@
 .pinned-animation-video {
     margin: 0;
 
+    @media(max-width: 767px){
+        height: 50vh;
+    }
+
     &__container {
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+
+        @media(max-width: 767px){
+            height: 100%;
+        }
+        
+        @media(min-width: 1200px){            
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
 
         .overlay {
             width: 100%;
@@ -83,8 +108,6 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
-            // clip-path: inset(0% 0% 0% 0%);
-            clip-path: inset(0% 0% 0% 0%), polygon(100% 0, 100% 42%, 0 100%, 0 60%);
         }
     }
 }

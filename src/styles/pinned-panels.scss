@@ -2,13 +2,23 @@
     display: flex;
     flex-direction: column-reverse;
     position: relative;
-    min-height: 300vh;
-    // overflow: hidden;
+    overflow: hidden;
 
+    
     @media(min-width: 768px){
+        overflow: visible;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: stretch;
+    }
+    
+    @media(min-width: 992px){
+        min-height: 300vh;
         align-items: flex-start;
+    }
+
+    @media(min-width: 1200px){
+        margin-top: -100vh;
     }
     
     .panel {
@@ -25,14 +35,19 @@
         flex-direction: column;
         justify-content: flex-start;
         background: var(--dark-grey-100);
+        padding-top: 50px;
 
         @media(min-width: 768px){
-            position: sticky;
+            position: relative;
             top: 0;
             min-height: 100vh;
             flex-direction: column;
             justify-content: center; 
             padding: 3em 7%;
+        }
+
+        @media(min-width: 992px){
+            position: sticky;
         }
 
         &__title {
@@ -56,7 +71,7 @@
         &__list {
             
             @media(max-width: 991px){
-                height: 300vh;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -66,7 +81,7 @@
                 height: 100%;
                 flex-direction: row;
                 justify-content: space-between;
-                transition: transform 0.5s ease-in-out
+                // transition: transform 0.5s ease-in-out
             }
 
 
@@ -117,29 +132,39 @@
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
-            transition: transform 0.5s ease-in-out;
+            // transition: transform 0.5s ease-in-out;
+            min-height: 100%
         }
 
         @media(min-width: 768px){
-            position: sticky;
+            position: relative;
             top: 0;
             min-height: 100vh;
+        }
+
+        @media(min-width: 992px){
+            position: sticky;
         }
 
         .panels-graphic {
             position: relative;
             overflow: hidden;
-            height: 50vh;
+            height: 33vh;
             // height: 500px;
             width: 100%;
             flex: 0 0 auto;
 
             @media(min-width: 768px){
-                position: absolute;
+                position: relative;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: auto;
+                height: 321px;
+            }
+
+            @media(min-width: 992px){
+                position: absolute;
                 height: 100vh;
             }
 
@@ -153,6 +178,11 @@
                 height: 110%;
                 -o-object-fit: cover;
                 object-fit: cover;
+                object-position: bottom;
+
+                @media(min-width: 768px){
+                    object-position: initial;
+                }
             }
         }
     }
@@ -162,7 +192,6 @@
         padding: 1.5em 7%;
         display: flex;
         justify-content: space-between;
-        display: block;
 
         @media(min-width: 768px){
             display: none;
