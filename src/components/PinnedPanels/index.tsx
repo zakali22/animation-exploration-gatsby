@@ -4,14 +4,17 @@ import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PanelContentList from "./PanelContentList";
 import PanelImageList from "./PanelMediaList";
+import PanelArrows from "./PanelArrows";
 
 const PinnedPanels = () => {
+    const [activeSlide, setActiveSlide] = React.useState(0)
+    
     const containerRef = React.useRef<HTMLDivElement>(null)
     const panelsContentRef = React.useRef<HTMLDivElement>(null)
     const panelsImagesRef = React.useRef<HTMLDivElement>(null)
     const panelsContentSlidesRef = React.useRef<HTMLDivElement>(null)
 
-    useGSAP(() => {
+    const { contextSafe } = useGSAP(() => {
         // use normal class selectors within the container context
         const vh = (coef: number) => window.innerHeight * (coef / 100);
         const mm = gsap.matchMedia()
@@ -101,8 +104,22 @@ const PinnedPanels = () => {
     }, {scope: containerRef})
 
 
+    const handleActiveSlide = contextSafe((slide: number) => {
+        setActiveSlide(slide)
+
+        const tl = gsap.timeline()
+        tl.to([panelsImagesRef.current, panelsContentSlidesRef.current], {
+            xPercent: slide === 0 ? 0 : (slide * -100),
+            duration: 1, 
+            ease: 'power4.inOut', 
+            stagger: 0.1
+        })
+    })
+
+
     return (
         <section className="panels"  ref={containerRef}>
+            <PanelArrows onClick={handleActiveSlide} currentSlide={activeSlide} />
             <div className="panels-content panel" ref={panelsContentRef}>
                 <PanelContentList ref={panelsContentSlidesRef} />
             </div>
