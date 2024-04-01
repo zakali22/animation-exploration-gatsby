@@ -5,6 +5,7 @@ import "./src/styles/nav.scss"
 import "./src/styles/custom-cursor.scss"
 import "./src/styles/pinned-panels.scss"
 import "./src/styles/pinned-header.scss"
+import "./src/styles/reveal-anim.scss"
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
       // do not restore scroll position on page refresh without hash

@@ -1,0 +1,63 @@
+.reveal-wrapper {
+    display: grid;
+    grid-template-areas: 
+        "sidenav content content"
+        "sidenav content content"
+        "sidenav content content";
+    height: 100vh;
+    gap: 30px;
+    padding: 20px;
+}
+
+.reveal-nav {
+    grid-area: sidenav;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            font-size: 25px;
+            margin: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+    }
+}
+
+.reveal-header {
+    grid-area: content;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    
+    
+    &__content {
+        overflow: hidden;
+
+    }
+}
+
+.reveal-video {
+    grid-area: content;
+    max-width: calc(100% - 160px);
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+
+    svg {
+        display: block;
+        // min-height: 250px;
+        // width: 250px;
+
+        path {
+            transform: scale(1.5) translate(180px, 190px);
+        }
+    }
+
+}
