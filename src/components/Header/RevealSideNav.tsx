@@ -2,11 +2,7 @@ import * as React from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 
-type RevealSideNavProp = {
-    handlePanelChange: (idx: number, hoverState: boolean) => void
-}
-
-export default function RevealSideNav({ handlePanelChange }: RevealSideNavProp){
+export default function RevealSideNav(){
     const containerSideNav = React.useRef<HTMLElement>(null)
 
     gsap.registerPlugin(useGSAP)
@@ -37,10 +33,10 @@ export default function RevealSideNav({ handlePanelChange }: RevealSideNavProp){
     return (
         <nav className="reveal-nav" ref={containerSideNav}>
             <ul>
-                <li onMouseOver={() => handlePanelChange(0, true)} onMouseLeave={() => handlePanelChange(0, false)}><div>Studio X</div></li>
-                <li onMouseOver={() => handlePanelChange(1, true)} onMouseLeave={() => handlePanelChange(0, false)}><div>Learn Teco</div></li>
-                <li onMouseOver={() => handlePanelChange(2, true)} onMouseLeave={() => handlePanelChange(0, false)}><div>Cruiser Barometer</div></li>
-                <li onMouseOver={() => handlePanelChange(3, true)} onMouseLeave={() => handlePanelChange(0, false)}><div>Pageant</div></li>
+                <li><div>Studio X</div></li>
+                <li><div>Learn Teco</div></li>
+                <li><div>Cruiser Barometer</div></li>
+                <li><div>Pageant</div></li>
             </ul>
         </nav>
     )
