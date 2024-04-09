@@ -10,21 +10,14 @@ import RevealImg4 from "../../images/reveal-image-4.jpeg"
 import RevealImg5 from "../../images/reveal-image-5.jpeg"
 
 type RevealPanelsProp = {
-    currentIdx: number, 
+    currentIdx: number | null, 
+    previousCurrentIdx: number | null,
     hoverState: boolean | null
 }
 
-const usePreviousProps = (value: number) => {
-    const ref = React.useRef(value)
 
-    React.useEffect(() => {
-        ref.current = value
-    }, [value])
 
-    return ref.current
-}
-
-export default function RevealPanelGrids({ currentIdx, hoverState }: RevealPanelsProp){
+export default function RevealPanelGrids({ currentIdx, previousCurrentIdx, hoverState }: RevealPanelsProp){
     const containerRef = React.useRef<HTMLDivElement>(null)
     const tl0 = gsap.timeline({ paused: true })
     const tl1 = gsap.timeline({ paused: true })
@@ -35,8 +28,6 @@ export default function RevealPanelGrids({ currentIdx, hoverState }: RevealPanel
 
     gsap.registerPlugin(useGSAP)
 
-
-    const prevCurrentIdx = usePreviousProps(currentIdx)
     
     useGSAP(() => {
         if(containerRef.current){
@@ -50,14 +41,21 @@ export default function RevealPanelGrids({ currentIdx, hoverState }: RevealPanel
             tl1.to(panelGrids[1].querySelectorAll('.reveal-panel-grid__item'), { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1 })
             
 
-            console.log("previous current index ", prevCurrentIdx)
+            console.log("previous current index ", previousCurrentIdx)
 
             if(hoverState !== null){
                 if(hoverState){
-                    timelines[prevCurrentIdx].reverse(0)
-                    timelines[currentIdx].play(0)
+                    if(previousCurrentIdx !== null){
+                        timelines[previousCurrentIdx].reverse(0)
+                    }
+
+                    if(currentIdx !== null){
+                        timelines[currentIdx].play(0)
+                    }
                 } else {
-                    timelines[currentIdx].reverse(0)
+                    if(previousCurrentIdx !== null){
+                        timelines[previousCurrentIdx].reverse(0)
+                    }
                 }
             } 
         }

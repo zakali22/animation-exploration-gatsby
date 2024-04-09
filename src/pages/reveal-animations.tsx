@@ -7,9 +7,20 @@ import RevealSideNav from "../components/Reveal/RevealSideNav"
 import RevealVideo from "../components/Reveal/RevealVideo"
 import RevealPanelGrids from "../components/Reveal/RevealPanelGrids"
 
+const usePreviousProps = (value: number | null) => {
+    const ref = React.useRef(value)
+
+    React.useEffect(() => {
+        ref.current = value
+    }, [value])
+
+    return ref.current
+}
+
 const PinnedAnimations = () => {
-    const [currentIdx, setCurrentIdx] = React.useState(0)
+    const [currentIdx, setCurrentIdx] = React.useState<number | null>(null)
     const [hoverState, setHoverState] = React.useState<boolean | null>(null)
+    const prevCurrentIdx = usePreviousProps(currentIdx)
 
     const lenisRef = React.useRef(null)
 
@@ -23,7 +34,7 @@ const PinnedAnimations = () => {
         // console.log(currentIdx)
     }, [currentIdx])
 
-    function handlePanelChange(idx: number, hoverState: boolean){
+    function handlePanelChange(idx: number | null, hoverState: boolean){
         setCurrentIdx(idx)
         setHoverState(hoverState)
     }
@@ -33,7 +44,7 @@ const PinnedAnimations = () => {
             <RevealSideNav handlePanelChange={handlePanelChange} />
             <RevealHeader />
             <RevealVideo />
-            <RevealPanelGrids currentIdx={currentIdx} hoverState={hoverState} />
+            <RevealPanelGrids currentIdx={currentIdx} previousCurrentIdx={prevCurrentIdx} hoverState={hoverState} />
         </header>
     )
 }
