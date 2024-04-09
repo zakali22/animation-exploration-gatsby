@@ -44,7 +44,7 @@ const HeaderNav = () => {
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
-                        <span>07ß</span>
+                        <span>07</span>
                         <span>cursor animations</span>
                     </a>
                 </li>
