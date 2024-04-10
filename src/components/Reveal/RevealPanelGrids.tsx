@@ -32,7 +32,9 @@ export default function RevealPanelGrids({ currentIdx, previousCurrentIdx, hover
             /** Timeline for Grids */
             const grid1 = panelGrids[0].querySelectorAll('.reveal-panel-grid__item');
             Array.from({length: GRID_NUM}, (v, gridNumber) => {
-                createTimeline(panelGrids[gridNumber].querySelectorAll('.reveal-panel-grid__item'))
+                const gridElements = panelGrids[gridNumber].querySelectorAll('.reveal-panel-grid__item');
+                const gridImages = panelGrids[gridNumber].querySelectorAll('.reveal-panel-grid__image img')
+                createTimeline(gridElements, gridImages)
             })
 
             if(hoverState !== null){
@@ -52,12 +54,13 @@ export default function RevealPanelGrids({ currentIdx, previousCurrentIdx, hover
             } 
 
 
-            function createTimeline(elements: NodeListOf<Element>){
+            function createTimeline(elements: NodeListOf<Element>, elementImages: NodeListOf<Element>){
                 const tl = gsap.timeline({ paused: true })
                 tl
                     .to(elements, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", stagger: 0.07, duration: 0.7, ease: "power4.inOut" }, 0)
                     .to(elements, { x: 0, y: 0, duration: 1, stagger: 0.05, ease: "power4.out" }, 0.1)
-
+                    .to(elementImages, { scale: 1, duration: 0.5, ease: "power2.out" }, 0.2)
+                    .to(elementImages, { filter: "brightness(1)", duration: 0.5 }, 0.6)
 
                 timelines.push(tl)
                 return tl
