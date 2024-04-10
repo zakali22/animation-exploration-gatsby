@@ -7,15 +7,7 @@ import RevealSideNav from "../components/Reveal/RevealSideNav"
 import RevealVideo from "../components/Reveal/RevealVideo"
 import RevealPanelGrids from "../components/Reveal/RevealPanelGrids"
 
-const usePreviousProps = (value: number | null) => {
-    const ref = React.useRef(value)
-
-    React.useEffect(() => {
-        ref.current = value
-    }, [value])
-
-    return ref.current
-}
+import usePreviousProps from "../hooks/usePreviousProps"
 
 const PinnedAnimations = () => {
     const [currentIdx, setCurrentIdx] = React.useState<number | null>(null)
@@ -48,6 +40,14 @@ const PinnedAnimations = () => {
         </header>
     )
 }
+
+/** TODO: 
+ * Create a grid for each of the links
+ * Create multi-directional option for each of the grid items
+ * Create scale and brightness animations for each of the grid items
+ * Change header text and background on hover
+ * Disable on smaller desktop and below (including on touch)
+ */
 
 
 export default PinnedAnimations
