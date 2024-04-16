@@ -40,11 +40,11 @@ export default function RevealPanelGrids({ currentIdx, previousCurrentIdx, hover
             if(hoverState !== null){
                 if(hoverState){
                     if(previousCurrentIdx !== null){
-                        timelines[previousCurrentIdx].timeScale(2).reverse(2)
+                        timelines[previousCurrentIdx].timeScale(2.5).reverse(2)
                     }
 
                     if(currentIdx !== null){
-                        timelines[currentIdx].timeScale(1.3).play(0)
+                        timelines[currentIdx].timeScale(1.5).play(0)
                     }
                 } else {
                     if(previousCurrentIdx !== null){
@@ -57,9 +57,9 @@ export default function RevealPanelGrids({ currentIdx, previousCurrentIdx, hover
             function createTimeline(elements: NodeListOf<Element>, elementImages: NodeListOf<Element>){
                 const tl = gsap.timeline({ paused: true })
                 tl
-                    .to(elements, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", stagger: 0.07, duration: 0.7, ease: "power4.inOut" }, 0)
+                    .to(elements, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", stagger: 0.07, duration: 1.5, ease: "power4.inOut" }, 0)
                     .to(elements, { x: 0, y: 0, duration: 1, stagger: 0.05, ease: "power4.out" }, 0.1)
-                    .to(elementImages, { scale: 1, duration: 0.5, ease: "power2.out" }, 0.2)
+                    .to(elementImages, { scale: 1, duration: 0.5, ease: "power2.out" }, 0.4)
                     .to(elementImages, { filter: "brightness(1)", duration: 0.5 }, 0.6)
 
                 timelines.push(tl)
