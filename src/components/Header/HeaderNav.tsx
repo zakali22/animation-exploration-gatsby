@@ -13,9 +13,9 @@ const HeaderNav = () => {
                     </Link>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
-                    <a href="/">
+                    <a href="/reveal-animations">
                         <span>02</span>
-                        <span>timelines</span>
+                        <span>reveal animations</span>
                     </a>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
@@ -27,30 +27,24 @@ const HeaderNav = () => {
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
                         <span>04</span>
-                        <span>reveal animations</span>
-                    </a>
-                </li>
-                <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
-                    <a href="/">
-                        <span>05</span>
                         <span>text animations</span>
                     </a>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
-                        <span>06</span>
+                        <span>05</span>
                         <span>svg distortions</span>
                     </a>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
-                        <span>07</span>
+                        <span>06</span>
                         <span>marquee effects</span>
                     </a>
                 </li>
                 <li className="header__nav-link h3" data-cursor-expand="true" data-cursor-size="lg" data-arrow-cursor="true">
                     <a href="/">
-                        <span>08</span>
+                        <span>07</span>
                         <span>cursor animations</span>
                     </a>
                 </li>
